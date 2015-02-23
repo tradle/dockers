@@ -12,5 +12,17 @@ RUN locale-gen en_US.UTF-8 && update-locale LANG=en_US.utf-8 && cabal update \
   && git clone http://github.com/galoisinc/HaLVM.git --recursive
 RUN cd HaLVM && autoconf && ./configure --enable-gmp --prefix /opt/HaLVM
 RUN cd HaLVM && make && make install
+ENV PATH=/opt/HaLVM/bin:$PATH
+# scripts in /opt/HaLVM assume /bin/sh is bash :(
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh \
+  && git clone http://github.com/GaloisInc/HaNS \
+  && git clone http://github.com/GaloisInc/network-hans \
+  && git clone http://github.com/acw/HTTP \
+  && halvm-cabal update && halvm-cabal install -j1 cereal fingertree \
+  monadLib random mtl parsec network-uri \
+  && for d in HaNS network-hans HTTP ; do cd $d ; \
+  halvm-cabal configure -f HaLVM && halvm-cabal build && halvm-cabal copy \
+  && halvm-cabal register ; cd .. ; done \
+  && rm /bin/sh && ln -s /bin/dash /bin/sh
 
 ENTRYPOINT ["/bin/bash"]
