@@ -1,17 +1,8 @@
 # Dockerfile for cpp-ethereum
-Dockerfile to build a bleeding edge cpp-ethereum docker image from source
+Dockerfile to install latest package from ppa:ethereum/ethereum-dev
 
-    docker build -t cppeth < Dockerfile
+    docker build -t consensys/cpp-ethereum < Dockerfile
 
-Run a simple peer server
+Connect to the test net
 
-    docker run -i cppeth -m off -o peer -x 256
-
-GUI is compiled but not exposed. You can mount /cpp-ethereum/build to access binaries:
-
-    cid = $(docker run -i -v /cpp-ethereum/build cppeth -m off -o peer -x 256)
-    docker inspect $cid # <-- Find volume path in JSON output
-
-You may also modify the Docker image to run the GUI and expose a
-ssh/VNC server in order to tunnel an X11 or VNC session.
-
+    docker run -i consensys/cpp-ethereum -m off -o peer -x 256 --remote poc-8.ethdev.com
