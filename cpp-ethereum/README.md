@@ -11,8 +11,7 @@ To start [ethereum-cli](https://github.com/ethereum/cpp-ethereum/wiki/Using-Ethe
 
     docker run -p 8383:8080 -i afdudley/cpp-ethereum:pbi -j -m off -o peer -x 256 --remote poc-8.ethdev.com 
 
-On Mac, if you are using boot2docker, run boot2docker ip, as [described in this tutorial](http://webiphany.com/technology/2014/06/12/what-ip-do-i-access-when-using-docker-and-boot2docker.html)
-On my machine it returns 192.168.59.103
+On Mac, if you are using boot2docker, run boot2docker ip, as [described in this tutorial](http://webiphany.com/technology/2014/06/12/what-ip-do-i-access-when-using-docker-and-boot2docker.html). On my machine it returns 192.168.59.103
 
 Test JSON-RPC using this IP and port 8383
 
