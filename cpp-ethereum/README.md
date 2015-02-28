@@ -19,6 +19,7 @@ Test JSON-RPC using this IP and port 8383
     curl -X POST --data '{"jsonrpc":"2.0","method":"web3_sha3","params":["0x68656c6c6f20776f726c64"],"id":64}' http://192.168.59.103:8383
 
 You should get something like this:
+
     {"id":64,"jsonrpc":"2.0","result":"0x47173285a8d7341e5e972fc677286384f802f8ef42a5ec5f03bbfa254cb01fad"}
 
 
