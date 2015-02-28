@@ -7,7 +7,7 @@ Connect to the test net
 
     docker run -i consensys/cpp-ethereum -m off -o peer -x 256 --remote poc-8.ethdev.com
 
-To start ethereum-cli via docker container based on a phusion docker image and json rpc port mapped from 8080 inside docker to 8383 on your host (mapped to 8383 as 8080 is usually already used):
+To start [ethereum-cli](https://github.com/ethereum/cpp-ethereum/wiki/Using-Ethereum-CLI-Client) via docker container based on a phusion docker image and [json rpc](https://github.com/ethereum/wiki/wiki/JSON-RPC) port mapped from 8080 inside docker to 8383 on your host (mapped to 8383 as 8080 is usually already used):
 
     docker run -p 8383:8080 -i afdudley/cpp-ethereum:pbi -j -m off -o peer -x 256 --remote poc-8.ethdev.com 
 
